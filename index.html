@@ -17,6 +17,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Calendly booking popup -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Daryl Andrew Damasco","jobTitle":"Real Estate Transaction Coordinator & Virtual Assistant","address":{"@type":"PostalAddress","addressLocality":"Manila","addressCountry":"PH"},"email":"mailto:drewdamasco.va@gmail.com","url":"https://dreeew14.github.io/","sameAs":["https://www.linkedin.com/in/daryl-damasco-46ab02372/","https://www.onlinejobs.ph/jobseekers/info/2085399"]}
 </script>
@@ -408,8 +411,7 @@ footer a:hover{color:var(--ink)}
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
       </button>
-      <!-- REPLACE with your Calendly link -->
-      <a class="btn btn-dark nav-cta" href="mailto:drewdamasco.va@gmail.com?subject=Discovery%20call%20request">Book a call</a>
+      <a class="btn btn-dark nav-cta" href="https://calendly.com/drewdamasco-va/30min" target="_blank" rel="noopener" data-calendly>Book a call</a>
     </div>
   </nav>
 </header>
@@ -423,8 +425,7 @@ footer a:hover{color:var(--ink)}
       <h1 class="reveal d1">Every deal kept on track, <em>from contract to close.</em></h1>
       <p class="hero-sub reveal d2">I'm Daryl, a Transaction Coordinator and Real Estate VA. I take the paperwork, deadlines and client follow-ups off your desk, so Realtors, investors and wholesalers can stay focused on the next deal.</p>
       <div class="ctas reveal d3">
-        <!-- REPLACE with your Calendly link -->
-        <a class="btn btn-dark" href="mailto:drewdamasco.va@gmail.com?subject=Discovery%20call%20request">Book a discovery call
+        <a class="btn btn-dark" href="https://calendly.com/drewdamasco-va/30min" target="_blank" rel="noopener" data-calendly>Book a discovery call
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-line" href="#work">See my work</a>
       </div>
@@ -652,9 +653,8 @@ footer a:hover{color:var(--ink)}
     <div class="cta-card reveal">
       <h2>Ready to hand off <em>your next file?</em></h2>
       <div class="cta-side">
-        <p>A 20-minute call to see if we're a good fit. No pressure, no obligation.</p>
-        <!-- REPLACE with your Calendly link -->
-        <a class="btn btn-lav" href="mailto:drewdamasco.va@gmail.com?subject=Discovery%20call%20request">Book a discovery call
+        <p>A 30-minute call to see if we're a good fit. No pressure, no obligation.</p>
+        <a class="btn btn-lav" href="https://calendly.com/drewdamasco-va/30min" target="_blank" rel="noopener" data-calendly>Book a discovery call
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -800,6 +800,14 @@ document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click'
   document.querySelectorAll('.filter').forEach(b => b.setAttribute('aria-pressed', b === btn));
   const f = btn.dataset.filter;
   grid.querySelectorAll('.project').forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f));
+}));
+
+/* ---------- CALENDLY POPUP (falls back to opening the link in a new tab) ---------- */
+document.querySelectorAll('[data-calendly]').forEach(a => a.addEventListener('click', e => {
+  if (window.Calendly && Calendly.initPopupWidget){
+    e.preventDefault();
+    Calendly.initPopupWidget({ url: a.href + '?hide_gdpr_banner=1' });
+  }
 }));
 
 /* ---------- MODAL ---------- */
