@@ -115,7 +115,7 @@ section{padding:128px 0}
 
 .portrait{position:relative;justify-self:end;width:min(440px,100%)}
 .frame{position:relative;aspect-ratio:4/5;border-radius:220px 220px var(--r-lg) var(--r-lg);overflow:hidden;background:linear-gradient(170deg,var(--accent-2),var(--bg-alt));box-shadow:var(--shadow-lg)}
-.frame img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
 .frame .fallback{position:absolute;inset:0;display:none;place-items:center;font:300 110px var(--serif);color:var(--accent)}
 .frame.no-img .fallback{display:grid}
 /* Illustrative tracker card */
@@ -153,6 +153,9 @@ section{padding:128px 0}
 /* ================= ABOUT ================= */
 .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:96px;align-items:start}
 .about h2{font-size:clamp(34px,4.6vw,56px)}
+.about-side{position:sticky;top:104px}
+.about-photo{margin-top:44px;aspect-ratio:3/4;max-width:420px;border-radius:var(--r-lg);overflow:hidden;background:var(--bg-alt);box-shadow:var(--shadow)}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
 .about h2 em{font-style:italic;color:var(--accent);font-weight:300}
 .lead{font:300 clamp(22px,2.4vw,28px)/1.45 var(--serif);color:var(--ink);margin-bottom:28px;letter-spacing:-.01em}
 .about-copy p:not(.lead){color:var(--ink-2);margin-bottom:18px}
@@ -342,6 +345,8 @@ footer a:hover{color:var(--ink)}
   section{padding:96px 0}
   .hero-grid,.about,.recog,.faq-wrap,.contact,.head{grid-template-columns:1fr;gap:48px}
   .head{gap:20px}.head p{justify-self:start}
+  .about-side{position:static}
+  .about-photo{max-width:360px;margin-top:32px}
   .portrait{justify-self:center;width:min(380px,88%);margin-bottom:24px}
   .tracker{left:-24px;bottom:-24px}
   .services,.projects{grid-template-columns:1fr 1fr}
@@ -437,7 +442,7 @@ footer a:hover{color:var(--ink)}
     </div>
     <div class="portrait reveal d2">
       <div class="frame" id="frame">
-        <img src="daryl.jpg" alt="Portrait of Daryl Damasco in a dark suit and tie, smiling" width="440" height="550" onerror="this.remove();document.getElementById('frame').classList.add('no-img')">
+        <img src="daryl-seated.jpg" alt="Daryl Damasco seated, wearing a black blazer and orange shirt, smiling at the camera" width="440" height="550" fetchpriority="high" onerror="this.remove();document.getElementById('frame').classList.add('no-img')">
         <span class="fallback" aria-hidden="true">DD</span>
       </div>
       <div class="tracker" role="img" aria-label="Illustration of a transaction tracker showing completed contract, inspection and finance steps, with settlement next">
@@ -480,9 +485,12 @@ footer a:hover{color:var(--ink)}
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="wrap about">
-    <div class="reveal">
+    <div class="about-side reveal">
       <div class="kicker"><b>01</b> About</div>
       <h2>A steady pair of hands <em>behind every file.</em></h2>
+      <figure class="about-photo">
+        <img src="daryl-standing.jpg" alt="Daryl Damasco standing with hands in pockets, in a black blazer, orange shirt and beige trousers" width="420" height="560" loading="lazy" onerror="this.parentElement.remove()">
+      </figure>
     </div>
     <div class="about-copy reveal d1">
       <p class="lead">Clients relax when they know someone is on top of the details. For more than 10 years, making sure of that has been my job.</p>
